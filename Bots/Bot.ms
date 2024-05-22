@@ -1,20 +1,28 @@
 
-direction_map = {"down":3, "left":0, "right":2, "up":1}
 Bot = {}
-Bot.direction = me.facing
+Bot.name = me.name
+Bot.job = ""
 
 
 //Public
 
-Bot.move_to = function
+Bot.drop = function(loacation)
+//drop item in chest
+    
+end function
+
+Bot.recharge = function(loacation)
+//moves to specified chest and picks up batteries 
     
 end function
 
 
-
-
-
 //Private
+
+Bot.move_to = function(cordinates)
+//Moves to cordinates
+    
+end function
 
 me.face_n = function(n)
     direction = me.facing

@@ -1,12 +1,14 @@
-import "listutil" 
-Node = {"pos":[-1,-1],"cost":0} 
+// Kan ta emot olika datastrukter som har cost definerad och sorterar efter största cost, Kan lätt ändra till en min heap om du vill  
 
 PriorityQueue = {}
 PriorityQueue.list = [] //list of nodes 
 
 PriorityQueue.enqueue = function(Node)  
     PriorityQueue.list.push(Node)
-    PriorityQueue.heapify(0)
+    for i in range(round(PriorityQueue.list.len / 2)-1, -1)
+        if i<0 then continue
+        PriorityQueue.heapify(i)    
+    end for
 end function
 
 PriorityQueue.heapify = function(index)
@@ -28,7 +30,10 @@ end function
 PriorityQueue.dequeue = function
     PriorityQueue.swap(0,PriorityQueue.list.len-1)
     res = PriorityQueue.list.pop
-    PriorityQueue.heapify(0)
+    for i in range(round(PriorityQueue.list.len / 2)-1, -1)
+        if i<0 then continue
+        PriorityQueue.heapify(i)    
+    end for
     return res
 end function
 
@@ -37,17 +42,3 @@ PriorityQueue.swap = function(Index1,Index2)
     PriorityQueue.list[Index1] = PriorityQueue.list[Index2] 
     PriorityQueue.list[Index2] = temp 
 end function
-
-test = new PriorityQueue
-test.enqueue({"pos":[-1,-1],"cost":6})
-test.enqueue({"pos":[-1,-1],"cost":2})
-test.enqueue({"pos":[-1,-1],"cost":3})
-test.enqueue({"pos":[-1,-1],"cost":4})
-test.enqueue({"pos":[-1,-1],"cost":1})
-test.enqueue({"pos":[-1,-1],"cost":9})
-
-
-for i in test.list 
-    print(i)
-    print(test.list[i].cost)
-end for 
