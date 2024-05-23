@@ -14,7 +14,7 @@ me.face = function(direction)
         me.left
     end for
 end function
-
+// penisballe
 
 me.face_down = function
     me.face_dir(3)
