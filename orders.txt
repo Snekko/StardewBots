@@ -1,0 +1,2 @@
+bot1: harvest [1,50]
+bot2: harvest [51, 100]

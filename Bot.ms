@@ -29,7 +29,7 @@ Bot.get_path = function(location)
     
 end function
 
-Bot.face_new_cell = function(cell) //most be adjasent cell 
+Bot.face_new_cell = function(cell) //most be adjacent cell 
     if me.position.x < cell[0] then
         Bot.face_n(1)
     end if
