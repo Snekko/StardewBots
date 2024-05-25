@@ -19,8 +19,19 @@ end function
 
 //Private
 
-Bot.move_to = function(location)
-//Moves to cordinates
+Bot.move_path = function(path)
+    
+    if path[0][0] != me.position.x or path[0][1] != me.position.y then 
+        print("Not same start")
+        path.pull
+    end if 
+    
+    for p in path
+        print(p)
+        Bot.face_new_cell(p)
+        me.forward
+        wait(5)
+    end for
 
 
 end function
