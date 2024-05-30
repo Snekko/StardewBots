@@ -1,4 +1,5 @@
 import "HarvestBot"
+import "gustavsShit"
 
 test = new HarvestBot
 //test.HarvestBot.clear_area()
@@ -14,3 +15,9 @@ test = new HarvestBot
 // 		end if
 // 	end for
 // end function
+
+
+//cd "/sys/StardewBots"
+//load "testing"
+//run
+//test.HarvestBot.harvest

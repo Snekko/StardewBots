@@ -3,12 +3,23 @@ Bot = {}
 Bot.name = me.name
 Bot.job = ""
 
-
 //Public
 
-Bot.drop = function(loacation)
+Bot.drop = function(chest_loacation,item)
+me.walk_to(chest_loacation[0],chest_loacation[1]-1)
+me.forward
+Bot.face_n(0)
+for i in me.inventory
+    if i == {} then 
+        continue
+    end if 
+    if i.name == item then
+        me.select(item)
+        me.placeItem
+    end if
+end for 
+
 //drop item in chest
-print("Drop")
 end function
 
 Bot.recharge = function(loacation)
@@ -19,18 +30,17 @@ end function
 
 //Private
 
-Bot.move_path = function(path)
+Bot.move_path = function(path,action)
     
-    if path[0][0] != me.position.x or path[0][1] != me.position.y then 
-        print("Not same start")
+    if path[0][0] == me.position.x or path[0][1] == me.position.y then 
+        print("Same start")
         path.pull
     end if 
     
     for p in path
-        print(p)
         Bot.face_new_cell(p)
-        me.forward
-        wait(5)
+        me.forward 
+        wait(1)
     end for
 
 
@@ -62,4 +72,33 @@ Bot.face_n = function(n)
     end while
 end function
 
+Bot.create_pathline_y = function(start_pos, end_pos)
+    current_pos = start_pos
+    line = []
+    for y in range(start_pos[1],end_pos[1])
+            if y == start_pos[1] then 
+                continue 
+            end if
+            new_pos = current_pos[0:]
+            new_pos[1] = y
+            current_pos = new_pos
+            line.push(current_pos)
+    end for
+    return line
+end function
+
+Bot.create_pathline_x = function(start_pos, end_pos)
+    current_pos = start_pos
+    line = []
+    for x in range(start_pos[0],end_pos[0])
+        if x == start_pos[0] then 
+            continue 
+        end if    
+            new_pos = current_pos[0:]
+            new_pos[0] = x
+            current_pos = new_pos
+            line.push(current_pos)
+    end for
+    return line
+end function
 

@@ -11,6 +11,17 @@ Cell = {"pos":[-1,-1],"cost":infinity, "parent":-1}
 // Cell???
 // wait? verkar ibland inte gå hela vägen
 
+map = {}
+location = me.position.area
+for x in range(0, location.width-1)
+    for y in range(0, location.height-1)
+        tempTile = location.tile(x,y)
+        if tempTile then
+            //if tempTile.type != "Building" then print(tempTile.type)
+            map[[x,y]] = tempTile.passable
+        end if
+    end for
+end for
 
 
 me.face_n = function(n)
